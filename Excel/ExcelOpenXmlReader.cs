@@ -41,6 +41,8 @@ namespace Excel
 		private string _namespaceUri;
 	    private Encoding defaultEncoding = Encoding.UTF8;
 
+	    private string _overrideLastColumn;
+
 	    #endregion
 
 		internal ExcelOpenXmlReader()
@@ -128,7 +130,7 @@ namespace Excel
 				{
 					string dimValue = _xmlReader.GetAttribute(XlsxWorksheet.A_ref);
 
-					sheet.Dimension = new XlsxDimension(dimValue);
+					sheet.Dimension = new XlsxDimension(dimValue, _overrideLastColumn);
 					break;
 				}
 
@@ -329,8 +331,9 @@ namespace Excel
 
 		#region IExcelDataReader Members
 
-		public void Initialize(System.IO.Stream fileStream)
+		public void Initialize(System.IO.Stream fileStream, string overrideLastColumn)
 		{
+		    _overrideLastColumn = overrideLastColumn;
 			_zipWorker = new ZipWorker();
 			_zipWorker.Extract(fileStream);
 

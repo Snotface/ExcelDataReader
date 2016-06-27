@@ -40,23 +40,40 @@ namespace TestApp
                 if (file.Extension == ".xls")
                 {
                    reader = ExcelReaderFactory.CreateBinaryReader(stream);
-                    
                 }
                 else if (file.Extension == ".xlsx")
                 {
-                    reader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+                    reader = ExcelReaderFactory.CreateOpenXmlReader(stream, "W");
                 }
 
                 if (reader == null)
+                {
                     return;
+                }
+
                 reader.IsFirstRowAsColumnNames = firstRowNamesCheckBox.Checked;
+
                 ds = reader.AsDataSet();
 
-                var tablenames = GetTablenames(ds.Tables);
+                IList<string> tablenames = GetTablenames(ds.Tables);
                 sheetCombo.DataSource = tablenames;
 
                 if (tablenames.Count > 0)
+                {
                     sheetCombo.SelectedIndex = 0;
+                }
+
+                DataRow myRow = ds.Tables[sheetCombo.SelectedItem.ToString()].Rows[0];
+                foreach (object o in myRow.ItemArray)
+                {
+                    richTextBox1.AppendText(o + Environment.NewLine);
+                }
+
+                foreach (DataRow row in ds.Tables[sheetCombo.SelectedItem.ToString()].Rows)
+                {
+                    //richTextBox1.AppendText(row[0] + Environment.NewLine);
+                }
+
 
                 //dataGridView1.DataSource = ds;
                 //dataGridView1.DataMember
@@ -72,15 +89,13 @@ namespace TestApp
             dataGridView1.DataSource = ds; // dataset
             dataGridView1.DataMember = tablename;
 
-            //GetValues(ds, tablename);
-
+            ////GetValues(ds, tablename);
         }
 
         public static void GetValues(DataSet dataset, string sheetName)
         {
             foreach (DataRow row in dataset.Tables[sheetName].Rows)
             {
-
                 foreach (var value in row.ItemArray)
                 {
                     Console.WriteLine("{0}, {1}", value, value.GetType());

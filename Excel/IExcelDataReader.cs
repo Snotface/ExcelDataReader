@@ -12,7 +12,7 @@ namespace Excel
 		/// Initializes the instance with specified file stream.
 		/// </summary>
 		/// <param name="fileStream">The file stream.</param>
-		void Initialize(Stream fileStream);
+		void Initialize(Stream fileStream, string overrideLastColumn);
 
 		/// <summary>
 		/// Read all data in to DataSet and return it

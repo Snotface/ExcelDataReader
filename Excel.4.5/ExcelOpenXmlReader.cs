@@ -15,6 +15,8 @@ namespace Excel
 	    private readonly ExcelDataReader.Portable.IExcelDataReader portable;
 	    private bool disposed;
 
+	    private string _overrideLastColumn;
+
 	    #region Members
 
 
@@ -37,8 +39,9 @@ namespace Excel
 		
 		#region IExcelDataReader Members
 
-		public void Initialize(System.IO.Stream fileStream)
+		public void Initialize(System.IO.Stream fileStream, string overrideLastColumn)
 		{
+		    _overrideLastColumn = overrideLastColumn;
 			AsyncHelper.RunSync(() => portable.InitializeAsync(fileStream));
 		}
 

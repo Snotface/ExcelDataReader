@@ -47,9 +47,11 @@ namespace ExcelDataReader.Portable
 		private List<int> _defaultDateTimeStyles;
 		private string _namespaceUri;
 
-		#endregion
+	    private string _overrideLastColumn;
 
-		public ExcelOpenXmlReader(IFileSystem fileSystem, IFileHelper fileHelper, IDataHelper dataHelper)
+        #endregion
+
+        public ExcelOpenXmlReader(IFileSystem fileSystem, IFileHelper fileHelper, IDataHelper dataHelper)
 		{
 		    this.fileSystem = fileSystem;
 		    this.fileHelper = fileHelper;
@@ -137,7 +139,7 @@ namespace ExcelDataReader.Portable
 				{
 					string dimValue = _xmlReader.GetAttribute(XlsxWorksheet.A_ref);
 
-					sheet.Dimension = new XlsxDimension(dimValue);
+					sheet.Dimension = new XlsxDimension(dimValue, _overrideLastColumn);
 					break;
 				}
 
@@ -161,7 +163,6 @@ namespace ExcelDataReader.Portable
                             biggestColumn = thisRef[1];
                     }
                 }
-					
 			}
 
 
@@ -338,8 +339,9 @@ namespace ExcelDataReader.Portable
 
 		#region IExcelDataReader Members
 
-		public async Task InitializeAsync(System.IO.Stream fileStream)
+		public async Task InitializeAsync(System.IO.Stream fileStream, string overrideLastColumn = "")
 		{
+		    _overrideLastColumn = overrideLastColumn;
             _zipWorker = new ZipWorker(fileSystem, fileHelper);
 
             await _zipWorker.Extract(fileStream);

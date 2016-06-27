@@ -37,6 +37,7 @@
             this.sheetCombo = new System.Windows.Forms.ComboBox();
             this.Sheet = new System.Windows.Forms.Label();
             this.firstRowNamesCheckBox = new System.Windows.Forms.CheckBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -44,13 +45,14 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "xls|*.xls|xlsx|*.xlsx|All|*.*";
+            this.openFileDialog1.Filter = "All|*.*|xls|*.xls|xlsx|*.xlsx";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(580, 50);
+            this.button1.Location = new System.Drawing.Point(435, 41);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(56, 19);
             this.button1.TabIndex = 0;
             this.button1.Text = "select file";
             this.button1.UseVisualStyleBackColor = true;
@@ -58,16 +60,18 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(140, 50);
+            this.textBox1.Location = new System.Drawing.Point(105, 41);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(434, 22);
+            this.textBox1.Size = new System.Drawing.Size(326, 20);
             this.textBox1.TabIndex = 1;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(580, 91);
+            this.button2.Location = new System.Drawing.Point(435, 74);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(56, 19);
             this.button2.TabIndex = 2;
             this.button2.Text = "Process";
             this.button2.UseVisualStyleBackColor = true;
@@ -82,28 +86,31 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(63, 170);
+            this.dataGridView1.Location = new System.Drawing.Point(47, 138);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(971, 465);
+            this.dataGridView1.Size = new System.Drawing.Size(728, 378);
             this.dataGridView1.TabIndex = 3;
             // 
             // sheetCombo
             // 
             this.sheetCombo.FormattingEnabled = true;
-            this.sheetCombo.Location = new System.Drawing.Point(233, 135);
+            this.sheetCombo.Location = new System.Drawing.Point(175, 110);
+            this.sheetCombo.Margin = new System.Windows.Forms.Padding(2);
             this.sheetCombo.Name = "sheetCombo";
-            this.sheetCombo.Size = new System.Drawing.Size(121, 24);
+            this.sheetCombo.Size = new System.Drawing.Size(92, 21);
             this.sheetCombo.TabIndex = 4;
             this.sheetCombo.SelectedIndexChanged += new System.EventHandler(this.sheetCombo_SelectedIndexChanged);
             // 
             // Sheet
             // 
             this.Sheet.AutoSize = true;
-            this.Sheet.Location = new System.Drawing.Point(360, 138);
+            this.Sheet.Location = new System.Drawing.Point(270, 112);
+            this.Sheet.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Sheet.Name = "Sheet";
-            this.Sheet.Size = new System.Drawing.Size(95, 17);
+            this.Sheet.Size = new System.Drawing.Size(72, 13);
             this.Sheet.TabIndex = 5;
             this.Sheet.Text = "Choose sheet";
             // 
@@ -112,18 +119,28 @@
             this.firstRowNamesCheckBox.AutoSize = true;
             this.firstRowNamesCheckBox.Checked = true;
             this.firstRowNamesCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.firstRowNamesCheckBox.Location = new System.Drawing.Point(343, 93);
+            this.firstRowNamesCheckBox.Location = new System.Drawing.Point(257, 76);
+            this.firstRowNamesCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.firstRowNamesCheckBox.Name = "firstRowNamesCheckBox";
-            this.firstRowNamesCheckBox.Size = new System.Drawing.Size(231, 21);
+            this.firstRowNamesCheckBox.Size = new System.Drawing.Size(176, 17);
             this.firstRowNamesCheckBox.TabIndex = 6;
             this.firstRowNamesCheckBox.Text = "first row contains column names";
             this.firstRowNamesCheckBox.UseVisualStyleBackColor = true;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(780, 138);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(646, 378);
+            this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 706);
+            this.ClientSize = new System.Drawing.Size(1438, 574);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.firstRowNamesCheckBox);
             this.Controls.Add(this.Sheet);
             this.Controls.Add(this.sheetCombo);
@@ -131,6 +148,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
@@ -151,6 +169,7 @@
         private System.Windows.Forms.ComboBox sheetCombo;
         private System.Windows.Forms.Label Sheet;
         private System.Windows.Forms.CheckBox firstRowNamesCheckBox;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

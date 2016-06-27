@@ -52,6 +52,8 @@ namespace Excel
 
 		private bool disposed;
 
+	    private string _overrideLastColumn;
+
 	    #endregion
 
 		internal ExcelBinaryReader()
@@ -912,8 +914,9 @@ namespace Excel
 
 		#region IExcelDataReader Members
 
-		public void Initialize(Stream fileStream)
+		public void Initialize(Stream fileStream, string overrideLastColumn)
 		{
+		    _overrideLastColumn = overrideLastColumn;
 			m_file = fileStream;
 
             readWorkBookGlobals();

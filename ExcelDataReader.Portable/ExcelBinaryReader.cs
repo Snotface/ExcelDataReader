@@ -55,6 +55,7 @@ namespace ExcelDataReader.Portable
         private readonly IDataHelper dataHelper;
 	    private bool convertOaDate = true;
 
+	    private string _overrideLastColumn;
 	    #endregion
 
 		public ExcelBinaryReader(IDataHelper dataHelper)
@@ -800,8 +801,9 @@ namespace ExcelDataReader.Portable
 
 		#region IExcelDataReader Members
 
-		public async Task InitializeAsync(Stream fileStream)
+		public async Task InitializeAsync(Stream fileStream, string overrideLastColumn = "")
 		{
+		    _overrideLastColumn = overrideLastColumn;
 			m_file = fileStream;
 
             await Task.Run(() => readWorkBookGlobals());
@@ -823,7 +825,6 @@ namespace ExcelDataReader.Portable
 
         //    ConvertOaDate = convertOADateTime;
         //    m_workbookData = new DataSet();
-            
 
         //    for (int index = 0; index < ResultsCount; index++)
         //    {

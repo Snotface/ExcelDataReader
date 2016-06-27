@@ -11,7 +11,7 @@ namespace ExcelDataReader.Portable
 		/// Initializes the instance with specified file stream.
 		/// </summary>
 		/// <param name="fileStream">The file stream.</param>
-		Task InitializeAsync(Stream fileStream);
+		Task InitializeAsync(Stream fileStream, string overrideLastColumn = "");
 
         ///// <summary>
         ///// Read all data in to DataSet and return it
