@@ -4,7 +4,7 @@ namespace ExcelDataReader.Portable.Core.OpenXmlFormat
 {
     internal class XlsxDimension
     {
-        public XlsxDimension(string value, string overrideLastColumn)
+        public XlsxDimension(string value, string overrideLastColumn = "XEN")
         {
             ParseDimensions(value, overrideLastColumn);
         }
@@ -49,7 +49,7 @@ namespace ExcelDataReader.Portable.Core.OpenXmlFormat
             set { _LastCol = value; }
         }
 
-        public void ParseDimensions(string value, string overrideLastColumn)
+        public void ParseDimensions(string value, string overrideLastColumn = "XEN")
         {
             string[] parts = value.Split(':');
 
@@ -92,7 +92,7 @@ namespace ExcelDataReader.Portable.Core.OpenXmlFormat
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        private string ReplaceColumn(string value, string overrideLastColumn)
+        private string ReplaceColumn(string value, string overrideLastColumn = "XEN")
         {
             string result = overrideLastColumn;
             int index = 0;
